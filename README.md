@@ -61,27 +61,31 @@ Full subtractor
 **Program:**
 full adder
 ~~~
-module FULLADD(a,b,cin,sum,carry);
+module exp4a(sum,cout,a,b,cin); 
+output sum; 
+output cout; 
 input a,b,cin;
-output sum,carry;
-wire w1,w2,w3,w4;       
-xor(w1,a,b);
-xor(sum,w1,cin);        
-and(w2,a,b);
-and(w3,b,cin);
-and(w4,cin,a);
-or(carry,w2,w3,w4);
-endmodule
+wire s1,c1,c2;
+xor(s1,a,b); 
+and(c1,a,b); 
+xor(sum,s1,cin); 
+and(c2,s1,cin); 
+or(cout,c2,c2); 
+endmodule 
 ~~~
 
 
 full subtractor
 ~~~
-module FULLSUB(a,b,Bin,BO,DIFF);
-input a,b,Bin;
-output BO,DIFF;
-assign DIFF = a ^ b ^ Bin;
-assign BO = (a & b) | ((a ^ b) & Bin);
+module exp4b(df,bo,a,b,bin); 
+output df,bo; 
+input a,b,bin; 
+wire w1,w2,w3; 
+assign w1=a^b; 
+assign w2=(~a&b); 
+assign w3=(~w1&bin); 
+assign df=w1^bin; 
+assign bo=w2|w3; 
 endmodule
 ~~~
 
@@ -93,21 +97,21 @@ endmodule
 
 full adder
 
-![394196174-2335a954-28a1-4074-94e0-4c0731fbe4da](https://github.com/user-attachments/assets/abfb35e7-b894-460e-a2bf-5670ba3c686e)
+![Screenshot 2024-12-29 174716](https://github.com/user-attachments/assets/ae7107a0-bcb3-4c18-8b19-80e2a7e3334f)
 
 full subtractor
 
-![383135147-a699cfeb-efb4-4280-b1fe-cf0debf77873](https://github.com/user-attachments/assets/11d317bd-b6e8-495d-8ed0-2eeffd5287ce)
+![Screenshot 2024-12-29 174726](https://github.com/user-attachments/assets/aa84a3ac-d1cd-4abb-8b60-fddc86f2d8c6)
 
 **Output Timing Waveform**
 
 full adder
 
-![392022688-7599b53b-42de-4be3-b2ad-0544f796c2f2](https://github.com/user-attachments/assets/63492276-457e-41f6-a5d7-9562bc0e5a1b)
+![Screenshot 2024-12-29 174821](https://github.com/user-attachments/assets/da065c86-2e73-4d79-91f6-d40929ecd8ef)
 
 full subtractor
 
-![392022832-b42f9eb9-b7c0-463d-a9f6-7a187a420e83](https://github.com/user-attachments/assets/d37dc4cb-56e9-4e2c-b24a-4d5913a90f35)
+![Screenshot 2024-12-29 174841](https://github.com/user-attachments/assets/3b9afa7c-3bdf-4c25-ae21-4dde3997354f)
 
 **Result:**
 
